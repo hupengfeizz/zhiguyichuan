@@ -1,72 +1,37 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
+''' numpy 索引和切片与列表 list 是一样的【从 0 开始索引】 '''
+lst2 = [[10, 20, 30],  # 0 索引  [10, 20, 30]   0 索引 10
+        [40, 50, 60]]  # 1 索引  [40, 50, 60]   0 索引 40
+# lst2[索引值]
 
-def grad(p, w):
-    delt = 2*(w-20)
-    w_new = w-p*delt
-    return [w_new, delt]
+''' 1. 索引：ndarray[索引] '''
+arr2 = np.array(lst2)  # shape(2, 3)   axis(0, 1)
+print(arr2[0])
+print(arr2[0].shape)  # shape(3,)
+# print(arr2[2])
+print(arr2[0][2])
 
-def loss(w):
-    l = (w-20)**2+5
-    return l
+print(arr2[1, 1])  # 50  第二行的第二个值
 
+''' 2. 切片：ndarray[起始索引 : 停止索引 : 步长, 索引] '''
+# 注意：三个点 ... 切片只能使用一次 :
+# ndarray[切片, 切片, 切片]    逗号维度减一
 
-if __name__ == '__main__':
-    p = 0.1
-    w0 = 2
-    w = w0
-    iter = 0
-    min = 0.001
-    gradient_threshold = 0.01
-    x = []
-    y = []
-    loss_current = loss(w)
-    # while True:
-    #     w_new, delt = grad(p, w)
-    #     w = w_new
-    #     l_new = loss(w)
+print(arr2[:1])
+print(arr2[:1].shape)  # shape(1, 3)
 
-    #     print(f'w:{w}')
-    #     print(f'l_new:{l_new}')
-    #     print(f'l_new-loss_current:{l_new-loss_current}')
-    #     y.append(l_new)
+arr3 = np.arange(60).reshape(4, 3, 5)
+# print(arr3)
+print(arr3[0:2])
+print(arr3[::2])
 
-    #     iter += 1
-    #     x.append(iter)
-    #     print(f'iter:{iter}')
+print('#' * 50)
+print(arr3[:, 0:2, ::2])
+#  axis轴： 0全部,  1取0,1,  2取0,2,4
 
-    #     if abs(l_new-loss_current) < min:
-    #         # print(f'w:{w}')
-    #         break
-    #     elif abs(delt)<gradient_threshold:
-    #         break
-    #     loss_current=l_new
+print('#' * 50)
+print(arr3[..., ::2])  # axis = 2
+print(arr3[:, :, ::2])
 
-    for i in range(20):
-        w_new, delt = grad(p, w)
-        w = w_new
-        l_new = loss(w)
-        if abs(delt) < gradient_threshold:
-            break
-        else:
-            print(f'w:{w}')
-            print(f'l_new:{l_new}')
-            print(f'l_new-loss_current:{l_new-loss_current}')
-            y.append(l_new)
-
-            iter += 1
-            x.append(iter)
-            print(f'iter:{iter}')
-
-            if abs(l_new-loss_current) < min:
-                # print(f'w:{w}')
-                break
-
-            loss_current = l_new
-
-    # plt.figure(figsize=(10,6))
-    plt.plot(x, y)
-    plt.xlabel('iter')
-    plt.ylabel('loss')
-    plt.show()
+print(arr3[..., ::2, :])  # axis = -1 最后一个
