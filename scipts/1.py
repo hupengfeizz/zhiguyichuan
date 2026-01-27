@@ -1,5 +1,6 @@
 import numpy as np
 
-arr4=np.arange(180).reshape(3,4,3,5)
-print(arr4)
-print(arr4[1,2])
+arr = np.random.randint(5,10, 5)
+print(arr)
+# [9 5 6 8 9]
+print(np.bincount(arr))

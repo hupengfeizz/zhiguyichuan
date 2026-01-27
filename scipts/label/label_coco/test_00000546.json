@@ -1,0 +1,1 @@
+[{"image": "test_00000546.jpg", "annotations": [{"label": "face", "coordinates": {"x": 108.95454545454547, "y": 65.4090909090909, "width": 77.00000000000001, "height": 89.0}}, {"label": "mask", "coordinates": {"x": 108.95454545454547, "y": 86.9090909090909, "width": 79.00000000000001, "height": 44.0}}]}]

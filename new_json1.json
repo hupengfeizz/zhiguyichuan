@@ -1,0 +1,15 @@
+[
+    {
+        "image": "图片名称",
+        "annotations": [
+            {
+                "label": {
+                    "x": 100,
+                    "y": "左上y",
+                    "width": "box的宽",
+                    "height": "box的高"
+                }
+            }
+        ]
+    }
+]
